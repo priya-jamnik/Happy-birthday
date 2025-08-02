@@ -1,0 +1,681 @@
+/* styles.css */
+
+:root {
+  --main-color: #ffd6e0;
+  --btn-color: #df6fa8;
+  --white: #fff;
+}
+
+#audio-background {
+  display: none;
+}
+
+
+body, html {
+  
+  cursor: url('https://cdn-icons-png.flaticon.com/32/833/833472.png'), auto;  /* Example: pink heart icon, 32x32px */
+
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  height: 100%;
+}
+
+.main-section {
+
+  background: url('secondmain.jpeg') ;
+  background-size: contain;
+  width: 100%;
+  height: 100vh;
+  color: var(--white);
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 0;
+  text-shadow: 2px 2px 12px #0008;
+}
+
+h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0.5rem 0 1rem 0;
+  color: #ffe188;
+  text-shadow: 1px 1px 6px #0006;
+}
+
+.heart {
+  color: red;
+  animation: heartBeat 1s infinite alternate;
+}
+
+/* Animations */
+@keyframes heartBeat {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.18); color: #f7126e;}
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.5s ease-in-out 0.2s forwards;
+}
+
+.heart-fade {
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out 1s forwards;
+}
+
+.fade-in-delay {
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out 2s forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+.explore-btn {
+  margin-top: 2rem;
+  padding: 1rem 2.5rem;
+  background: var(--btn-color);
+  color: var(--white);
+  font-size: 1.3rem;
+  border: none;
+  border-radius: 30px;
+  cursor: url('https://cdn-icons-png.flaticon.com/32/833/833472.png'), auto;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.3s;
+  box-shadow: 0 2px 28px 0 #d000ba33;
+  font-weight: 700;
+  letter-spacing: 1px;
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out 3s forwards;
+}
+
+.explore-btn:hover {
+  background: #ff93b3;
+  transform: scale(1.08);
+}
+
+.heart-btn {
+  color: #fff;
+  margin-left: 4px;
+  animation: heartBeat 1.2s infinite alternate;
+}
+
+.scroll-indicator {
+  color: #eeeeee;
+  font-size: 1.1rem;
+  margin-top: 3.5rem;
+  opacity: 0.85;
+  animation: fadeIn 2s ease-in-out 4s forwards;
+}
+
+.arrow {
+  display: block;
+  font-size: 2.3rem;
+  margin-top: 0.2rem;
+  color: #ffd6e0;
+  animation: bounceArrow 1.2s infinite;
+}
+
+@keyframes bounceArrow {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(14px);}
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  h1 { font-size: 2.3rem; }
+  h2 { font-size: 1.4rem; }
+  .content { padding: 25px 10px; }
+  .explore-btn { font-size: 1rem; }
+}
+
+/* second page*/
+#memory-video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+
+  opacity: 0.35; /* adjust opacity for overlay effect */
+  border-radius: 20px; /* if your section has rounded corners */
+}
+
+
+
+.memories-section {
+  background: linear-gradient(180deg, #efbecf 0%, #fff3f9 100%);
+  padding: 54px 0 60px 0;
+  text-align: center;
+
+}
+
+.memories-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #452946;
+  margin-bottom: 8px;
+  letter-spacing: 1.5px;
+  animation: fadeUp 0.88s cubic-bezier(.4,1,.3,1);
+}
+.memories-subtitle {
+  font-size: 1.18rem;
+  color: #bc6ca7;
+  margin-bottom: 38px;
+  letter-spacing: 1px;
+  animation: fadeUp 1.2s .18s cubic-bezier(.4,1,.3,1) both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+.memories-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(300px, 1fr));
+  grid-gap: 34px 36px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.memory-card {
+  position: relative;
+  border-radius: 20px;
+  background: #fff7fd;
+  min-height: 180px;
+  box-shadow: 0 8px 30px 0 rgba(173, 74, 165, 0.07), 0 1.5px 18px #e9cee170;
+  padding: 30px 28px 22px 28px;
+  overflow: hidden;
+  transition: box-shadow 0.38s cubic-bezier(.48,1.56,.44,.74), transform 0.38s cubic-bezier(.35,1.42,.31,.74), background 0.22s;
+  cursor: url('https://cdn-icons-png.flaticon.com/32/833/833472.png'), auto;
+  z-index: 1;
+  animation: cardPopIn 1.1s cubic-bezier(.4,1,.3,1);
+}
+
+@keyframes cardPopIn {
+  from {opacity: 0; transform: scale(0.9);}
+  to   {opacity: 1; transform: scale(1);}
+}
+
+.memory-card h3 {
+  margin: 10px 0 8px 0;
+  color: #374151;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.memory-card p {
+  margin: 0;
+  color: #d468b7;
+  font-size: 1.03rem;
+  letter-spacing: 0.1px;
+}
+
+/* Label styles */
+.memory-label {
+  display: block;
+  font-size: 0.97rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  margin-bottom: 5px;
+  text-align: left;
+}
+.first-meeting { color: #efa2c1;}
+.first-date { color: #bb77c6;}
+.special-moment { color: #df78a4;}
+
+/* Image card */
+.image-card {
+  background-size: cover;
+  background-position: center;
+  min-height: 180px;
+  height: 100%;
+  box-shadow: 0 5px 26px #e87bd07a;
+  border-radius: 20px;
+  transition: box-shadow 0.38s, transform 0.38s, filter 0.36s;
+  border: 0;
+  padding: 0;
+}
+
+.image-card::before {
+  content: "";
+  display: block;
+  padding-top: 62%; /* maintains aspect ratio */
+}
+.image-card[title]:after {
+  content: attr(title);
+  position: absolute;
+  left: 0; right: 0; bottom: 18px;
+  width: 100%;
+  color: #fff;
+  font-size: 1.01rem;
+  background: linear-gradient(0deg, rgba(47,0,62,.48) 0%, rgba(0,0,0,0) 90%);
+  padding: 14px 22px 8px 20px;
+  border-radius: 0 0 20px 20px;
+  opacity: 0.84;
+  letter-spacing: 0.2px;
+  font-weight: 600;
+  pointer-events: none;
+  transition: background 0.36s;
+}
+
+.memory-card:hover, .image-card:hover {
+  background: #f3e8fc;
+  transform: translateY(-7px) scale(1.03) rotateZ(-1.5deg);
+  box-shadow: 0 12px 56px #ea81a599, 0 2px 28px #ffd1ec85;
+}
+
+.image-card:hover {
+  filter: brightness(1.02) contrast(1.08) saturate(1.18) drop-shadow(0 6px 22px #fa7ab177);
+  transform: scale(1.06) rotateZ(2deg) !important;
+}
+.memory-card:hover h3,
+.memory-card:hover p,
+.memory-card:hover .memory-label {
+  color: #c62983;
+  transition: color 0.28s;
+}
+.image-card:hover:after {
+  background: linear-gradient(0deg, #cf61b7cc 0%, rgba(0,0,0,0) 100%);
+  opacity: 0.94;
+}
+
+/* Responsive for tablets and mobile */
+@media (max-width: 900px) {
+  .memories-grid {
+    grid-template-columns: 1fr;
+    grid-gap: 26px;
+  }
+  .memory-card { min-height: 160px; }
+}
+@media (max-width: 600px) {
+  .memories-title { font-size: 1.35rem; }
+  .memories-grid { padding: 0 2vw;}
+  .memory-card { padding: 22px 10px 13px 12px; }
+}
+
+
+.love-gallery-section {
+  padding: 64px 0 54px 0;
+  background: linear-gradient(180deg, #fbe4ef 0%, #fff7fd 100%);
+  text-align: center;
+}
+
+.gallery-heading {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #392140;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+  animation: fadeUp 1s;
+}
+.gallery-subheading {
+  color: #a05b96;
+  font-size: 1.18rem;
+  margin-bottom: 38px;
+  letter-spacing: 0.2px;
+  animation: fadeUp 1.2s .15s both;
+}
+
+/* Grid Layout */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(230px, 1fr));
+  grid-template-rows: repeat(2, 195px);
+  gap: 32px;
+  justify-content: center;
+  max-width: 100px;
+  margin: 0 auto;
+}
+
+/* Gallery card with open-center hover animation */
+.gallery-card {
+  position: relative;
+  border-radius: 22px;
+  background-position: center;
+  background-size: cover;
+  min-height: 190px;
+  box-shadow: 0 5px 34px #f0aec77a, 0 2px 18px #ec8ad24d;
+  overflow: hidden;
+  cursor: url('https://cdn-icons-png.flaticon.com/32/833/833472.png'), auto;
+  will-change: transform, box-shadow;
+  opacity: 0;
+  transform: translateY(36px) scale(0.97);
+  animation: cardFadePop 1.2s cubic-bezier(.43,1.2,.9,.69) forwards;
+}
+
+/* Card fade in animation */
+@keyframes cardFadePop {
+  from {opacity: 0; transform: translateY(36px) scale(0.93);}
+  to   {opacity: 1; transform: translateY(0) scale(1);}
+}
+
+/* Staggered animation delay for each card */
+.gallery-card:nth-child(1) { animation-delay: .18s;}
+.gallery-card:nth-child(2) { animation-delay: .32s;}
+.gallery-card:nth-child(3) { animation-delay: .46s;}
+.gallery-card:nth-child(4) { animation-delay: .64s;}
+.gallery-card:nth-child(5) { animation-delay: .72s;}
+.gallery-card:nth-child(6) { animation-delay: .86s;}
+
+/* Open-from-center hover effect using ::before */
+.gallery-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  background-size: inherit;
+  background-position: inherit;
+  border-radius: 22px;
+  z-index: 1;
+  transform: scale(1, 1);
+  transition:
+    transform 0.55s cubic-bezier(.62,1.6,.3,.8),
+    filter 0.49s cubic-bezier(.43,1.3,.47,.8);
+  filter: none;
+}
+
+/* "Open center" effect: horizontal shrink, slight vertical scale, blur/darken */
+.gallery-card:hover::before {
+  transform: scaleX(0.13) scaleY(1.13);
+  filter: blur(2.5px) brightness(0.78) saturate(1.2);
+}
+
+/* Raise hovered card above others */
+.gallery-card:hover {
+  box-shadow: 0 10px 46px #e263ab63, 0 4px 34px #fc88e17e;
+  z-index: 3;
+}
+
+/* Overlay content */
+.gallery-card .gallery-card-overlay {
+  opacity: 0;
+  transform: translateY(22px) scale(0.92);
+  transition: opacity 0.44s cubic-bezier(.33,1.1,.36,.92), transform 0.36s cubic-bezier(.33,1.1,.36,.92);
+  z-index: 2;
+  position: relative;
+}
+
+.gallery-card:hover .gallery-card-overlay {
+  opacity: 1;
+  transform: translateY(0) scale(1.06);
+}
+
+/* Ensure overlay stacks above image effect */
+.gallery-card > * {
+  position: relative;
+  z-index: 3;
+}
+
+.with-text .gallery-card-overlay {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 26px 20px 20px 20px;
+  width: 100%;
+  color: #fff;
+  background: linear-gradient(0deg, #c82e8fce 0%, transparent 100%);
+  text-align: left;
+  opacity: 0.91;
+  transition: background 0.32s, opacity 0.32s, transform 0.28s;
+  animation: textFadeIn 1.4s cubic-bezier(.48,.89,.66,1) 0.19s both;
+}
+@keyframes textFadeIn {
+  from { opacity: 0; transform: translateY(18px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+.with-text:hover .gallery-card-overlay {
+  background: linear-gradient(0deg, #fc076dd9 15%, transparent 100%);
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+.gallery-card-overlay h3 {
+  font-size: 1.22rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: 0.7px;
+  text-shadow: 1px 2px 11px #932e7185;
+}
+.gallery-card-overlay span {
+  font-size: 0.97rem;
+  color: #ffe6f7;
+  font-weight: 400;
+  text-shadow: 0 2px 7px #f528a44c;
+}
+
+/* Responsive: adjust columns and card size for smaller screens */
+@media (max-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 170px);
+    gap: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 170px);
+    gap: 18px;
+    max-width: 95vw;
+  }
+  .gallery-heading { font-size: 1.5rem;}
+}
+
+
+.words-section {
+  background: linear-gradient(135deg, #fed6e6 0%, #ffe1fc 60%, #f3e9f7 100%);
+  width: 100%;
+  min-height: 100vh;
+  padding: 60px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Heading */
+.words-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #73476b;
+  margin-bottom: 7px;
+  animation: fadeUp 1s;
+  text-align: center;
+}
+.words-desc {
+  color: #b485af;
+  font-size: 1.15rem;
+  margin-bottom: 28px;
+  letter-spacing: 0.2px;
+  animation: fadeUp 1.2s .15s both;
+  text-align: center;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px);}
+  to   { opacity: 1; transform: translateY(0);}
+}
+
+/* Quotes Grid */
+.quotes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  grid-gap: 36px 36px;
+  max-width: 660px;
+  width: 90vw;
+  margin: 0 auto 44px auto;
+  animation: gridIn .95s cubic-bezier(.4,1.1,.35,1.12);
+}
+@keyframes gridIn {
+  from { opacity: 0; transform: scale(.96);}
+  to   { opacity: 1; transform: scale(1);}
+}
+
+.quote-card {
+  background: rgba(255,255,255,0.90);
+  border-radius: 18px;
+  box-shadow: 0 3px 17px #efbad624, 0 1.5px 10px #ec8ad252;
+  padding: 32px 20px 22px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 120px;
+  position: relative;
+  transition: box-shadow .28s, transform .32s;
+  cursor: url('https://cdn-icons-png.flaticon.com/32/833/833472.png'), auto;
+  animation: cardPopIn .75s cubic-bezier(.53,1.37,.36,.98);
+}
+@keyframes cardPopIn {
+  from {opacity:0; transform:scale(.93) translateY(16px);}
+  to {opacity:1; transform:scale(1) translateY(0);}
+}
+.quote-card:hover {
+  box-shadow: 0 6px 24px #fa97d560, 0 2px 15px #ffd4ec77;
+  transform: scale(1.04) translateY(-4px) rotateZ(-.7deg);
+}
+
+/* Quote text */
+.quote-text {
+  font-size: 1.13rem;
+  color: #792c6c;
+  font-weight: 700;
+  margin-bottom: 18px;
+  letter-spacing: .3px;
+  line-height: 1.35;
+  transition: color 0.21s;
+}
+.quote-author {
+  font-size: 0.98rem;
+  color: #af5b8d;
+  opacity: 0.9;
+  font-style: italic;
+  letter-spacing: .2px;
+}
+
+/* Center Birthday Card */
+.center-birthday-card {
+  background: linear-gradient(105deg,#ffeafb 72%,#fbbee2 100%);
+  box-shadow: 0 12px 50px #ee7dd332, 0 2px 22px #ffdbe464;
+  border-radius: 22px;
+  padding: 40px 32px 32px 32px;
+  margin: 60px auto 30px auto;
+  max-width: 700px;
+  text-align: center;
+  animation: centerFloatIn 1.05s cubic-bezier(.31,1.1,.25,1.23);
+  position: relative;
+}
+@keyframes centerFloatIn {
+  from { opacity: 0; transform: translateY(40px) scale(.94);}
+  to   { opacity: 1; transform: translateY(0) scale(1);}
+}
+.birthday-icon {
+  font-size: 2.1rem;
+  margin-bottom: 10px;
+  /* subtle pop effect */
+  animation: crownPop 1.1s .2s cubic-bezier(.53,1.3,.41,1) both;
+}
+@keyframes crownPop {
+  0% { transform: scale(0.7) rotate(-11deg);}
+  68% { transform: scale(1.16) rotate(7deg);}
+  100% { transform: scale(1) rotate(0);}
+}
+.birthday-message-title {
+  font-size: 1.43rem;
+  font-weight: 800;
+  color: #d24089;
+  margin-bottom: 16px;
+  letter-spacing: 0.6px;
+}
+.birthday-message {
+  color: #864d75;
+  font-size: 1.08rem;
+  line-height: 1.59;
+  letter-spacing: 0.13px;
+  margin: 0 auto;
+}
+.crown-text {
+  color: #f85d9c;
+  font-weight: 700;
+  display: block;
+  margin-top: 14px;
+}
+
+/* Footer at bottom */
+.last-footer {
+  width: 100%;
+  padding: 29px 0 34px 0;
+  margin-top: 35px;
+  background: transparent;
+  text-align: center;
+}
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.81;
+  font-size: 0.98rem;
+  color: #bb649e;
+}
+.footer-heart {
+  font-size: 1.42rem;
+  margin-bottom: 5px;
+  opacity: 0.9;
+}
+.footer-made-with {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: .2px;
+  margin-bottom: 11px;
+}
+.footer-divider {
+  width: 52px;
+  height: 2px;
+  background: #fbb7df;
+  border-radius: 9px;
+  margin: 8px 0;
+  opacity: 0.55;
+}
+.footer-copyright {
+  margin-top: 7px;
+  color: #c985b4;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .quotes-grid {
+    grid-template-columns: 1fr;
+    max-width: 95vw;
+    gap: 22px 0;
+  }
+  .center-birthday-card { padding: 29px 7vw 21px 7vw; max-width: 96vw;}
+}
+@media (max-width: 500px) {
+  .words-title { font-size: 1.25rem;}
+  .center-birthday-card { padding: 17px 4vw 12px 4vw; font-size: .99rem;}
+}
